@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakir Master - Custom Designs & Alterations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+                url('https://i.pinimg.com/736x/04/04/bc/0404bcc88f6817188a501285020dc989.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(231, 76, 60, 0.1), rgba(52, 152, 219, 0.1));
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background: linear-gradient(45deg, rgba(231, 76, 60, 0.1), rgba(52, 152, 219, 0.1));
+            }
+
+            50% {
+                background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(231, 76, 60, 0.1));
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .service-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .service-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .service-contact-btn {
+            flex: 1;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                /* one item per row on small screens */
+                gap: 1rem;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+
+        .portfolio-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .portfolio-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .portfolio-btn {
+            flex: 1;
+            padding: 12px 15px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .call-btn {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+        }
+
+        .call-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-icon {
+            margin-right: 5px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 2rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
+            box-sizing: border-box;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image>div {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 480px) {
+            .about-content {
+                gap: 1rem;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .about-image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Force 3 columns on desktop */
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .about-image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* On small screens, switch to 1 column */
+        @media (max-width: 768px) {
+            .about-image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .portfolio-image {
+            height: auto;
+            background: none;
+            display: block;
+            padding: 0;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+    </style>
+    <style>
+        #contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .contact-item {
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .contact-item p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .contact-item a {
+            color: #00E5FF;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding-left: 25px;
+            display: inline-block;
+        }
+
+        .contact-item a:hover {
+            color: #18FFFF;
+        }
+
+        /* Icons stay the same */
+        .contact-item a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* Icons based on type */
+        .contact-item a[href^="tel:"]::before {
+            background-image: url('https://img.icons8.com/fluency-systems-filled/24/ffffff/phone.png');
+        }
+
+        .contact-item a[href^="mailto:"]::before {
+            background-image: url('https://img.icons8.com/fluency-systems-filled/24/ffffff/new-post.png');
+        }
+
+        .contact-item a[href*="wa.me"]::before {
+            background-image: url('https://img.icons8.com/fluency-systems-filled/24/ffffff/whatsapp.png');
+        }
+
+        .contact-item a[href*="instagram.com"]::before {
+            background-image: url('https://img.icons8.com/fluency-systems-filled/24/ffffff/instagram-new.png');
+        }
+
+        .contact-item a[href*="facebook.com"]::before {
+            background-image: url('https://img.icons8.com/fluency-systems-filled/24/ffffff/facebook-new.png');
+        }
+
+        .contact-item a[href*="pinterest.com"]::before {
+            background-image: url('https://img.icons8.com/fluency-systems-filled/24/ffffff/pinterest.png');
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Zakir Master</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Crafting Excellence in Every Stitch</h1>
+            <p>Custom tailoring and alterations with 25+ years of expertise</p>
+            <a href="#portfolio" class="cta-button">View Our Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Our Craft</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>With over 25 years of experience in the art of tailoring, we bring precision, passion, and
+                        perfection to every garment we create. Our commitment to excellence ensures that each piece is
+                        not just clothing, but a masterpiece that reflects your unique style and personality.</p>
+                    <p>From traditional suits to contemporary designs, we blend time-honored techniques with modern
+                        innovations to deliver exceptional quality that stands the test of time.</p>
+                </div>
+                <div class="about-image-grid">
+                    <img src="https://i.pinimg.com/736x/5d/3c/21/5d3c21e8814a52c8f5996d83ace84d53.jpg"
+                        alt="Master at Work">
+                    <img src="https://i.pinimg.com/736x/9b/a7/53/9ba75334ea8fa6763800b2ab97e0d403.jpg"
+                        alt="Master at Work">
+                    <img src="https://i.pinimg.com/736x/25/ff/59/25ff59138d5797a88a8e2d7b5f9b0494.jpg"
+                        alt="Master at Work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid" id="services-container">
+                <!-- Services will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Designs</h2>
+            <div class="portfolio-grid" id="portfolio-container">
+                <!-- Portfolio items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info" id="contact-container">
+                <!-- Contact info will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Static data stored in JavaScript objects
+        const tailorData = {
+            services: [
+                {
+                    icon: "✂️",
+                    title: "Custom Suits",
+                    description: "Bespoke suits tailored to your exact measurements and style preferences. From classic to contemporary designs."
+                },
+                {
+                    icon: "👔",
+                    title: "Formal Wear",
+                    description: "Elegant formal wear for special occasions. Tuxedos, evening wear, and ceremonial attire."
+                },
+                {
+                    icon: "👗",
+                    title: "Alterations",
+                    description: "Professional alterations for all types of garments. Perfect fit guaranteed for your existing wardrobe."
+                },
+                {
+                    icon: "🧵",
+                    title: "Repairs",
+                    description: "Expert garment repairs and restoration. Bringing new life to your favorite pieces."
+                }
+            ],
+
+            portfolio: [
+                {
+                    title: "Classic Navy Suit",
+                    description: "Traditional three-piece navy suit with peak lapels. Perfect for business and formal occasions.",
+                    category: "Business Formal",
+                    price: "$1,200",
+                    image: "Classic Business Suit",
+                    imageUrl: "https://i.pinimg.com/736x/a0/9a/28/a09a28d69833de5530a71d1ddbd1f577.jpg" // Replace with actual image URL
+                },
+                {
+                    title: "Wedding Tuxedo",
+                    description: "Elegant black tuxedo with satin details. Custom-fitted for the perfect wedding day look.",
+                    category: "Formal Wear",
+                    price: "$1,500",
+                    image: "Wedding Tuxedo",
+                    imageUrl: "https://i.pinimg.com/736x/9b/94/1a/9b941ac8437db6a9680971ff73afffe6.jpg" // Replace with actual image URL
+                },
+                {
+                    title: "Casual Blazer",
+                    description: "Smart-casual blazer in premium wool blend. Versatile piece for everyday elegance.",
+                    category: "Smart Casual",
+                    price: "$800",
+                    image: "Casual Blazer",
+                    imageUrl: "https://i.pinimg.com/736x/46/68/a7/4668a702b47d57c5815966f75b0080c4.jpg" // Replace with actual image URL
+                },
+                {
+                    title: "Traditional Waistcoat",
+                    description: "Hand-crafted waistcoat with intricate button details. A timeless addition to any wardrobe.",
+                    category: "Traditional",
+                    price: "$400",
+                    image: "Traditional Waistcoat",
+                    imageUrl: "https://i.pinimg.com/736x/cb/95/cd/cb95cdb8ae1544a7cdb44d80d2643a1a.jpg" // Replace with actual image URL
+                },
+                {
+                    title: "Custom Overcoat",
+                    description: "Luxurious wool overcoat with tailored fit. Perfect protection with sophisticated style.",
+                    category: "Outerwear",
+                    price: "$1,000",
+                    image: "Custom Overcoat",
+                    imageUrl: "https://i.pinimg.com/736x/54/ea/1d/54ea1d52998a471249f11ceacabf3f72.jpg" // Replace with actual image URL
+                },
+                {
+                    title: "Dress Shirt",
+                    description: "Premium cotton dress shirt with French cuffs. Precision tailoring for the perfect fit.",
+                    category: "Shirts",
+                    price: "$150",
+                    image: "Custom Dress Shirt",
+                    imageUrl: "https://i.pinimg.com/736x/31/4c/f7/314cf7c40438cd28fe58d56c065beaba.jpg" // Replace with actual image URL
+                }
+            ],
+
+            contact: [
+                {
+                    title: "Visit Our Workshop",
+                    details: ["Shop No. 2, Sharman Trailer, Shankar Mathur Road, Mumbai – 400019", "Open Tue-Sun 9AM-9PM"]
+                },
+                {
+                    title: "Get In Touch",
+                    details: ["Phone: +91 79777 30877 ", "Email: zakirmaster@gmail.com", "WhatsApp: +91 79777 30877"]
+                },
+                {
+                    title: "Follow Our Work",
+                    details: ["Instagram: zakir_98765", "Facebook: Zakir Mater Mumbai", "Pinterest: Master Tailor Designs Designs"]
+                }
+            ]
+        };
+
+        // Function to populate services
+        function populateServices() {
+            const container = document.getElementById('services-container');
+            tailorData.services.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="service-icon">${service.icon}</div>
+                    <h3>${service.title}</h3>
+                    <p>${service.description}</p>
+                    <div class="service-buttons">
+                        <button class="service-contact-btn whatsapp-btn" onclick="contactServiceViaWhatsApp('${service.title}')">
+                            <span class="btn-icon">📱</span>WhatsApp
+                        </button>
+                        <button class="service-contact-btn call-btn" onclick="callNow()">
+                            <span class="btn-icon">📞</span>Call Now
+                        </button>
+                    </div>
+                `;
+                container.appendChild(serviceCard);
+            });
+        }
+
+        // Function to populate portfolio
+        function populatePortfolio() {
+            const container = document.getElementById('portfolio-container');
+            tailorData.portfolio.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.innerHTML = `
+                    <div class="portfolio-image">
+                        <img src="${item.imageUrl}" alt="${item.title}">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>${item.title}</h3>
+                        <p><strong>Category:</strong> ${item.category}</p>
+                        <p>${item.description}</p>
+                        <div class="portfolio-buttons">
+                            <button class="portfolio-btn whatsapp-btn" onclick="contactViaWhatsApp('${item.title}', '${item.price}', '${item.imageUrl}')">
+                                <span class="btn-icon">📱</span>WhatsApp
+                            </button>
+                            <button class="portfolio-btn call-btn" onclick="callNow()">
+                                <span class="btn-icon">📞</span>Call Now
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(portfolioItem);
+            });
+        }
+
+        // Function to populate contact info
+        // Function to populate contact info with clickable links
+        function populateContact() {
+            const container = document.getElementById('contact-container');
+            tailorData.contact.forEach(contact => {
+                const contactItem = document.createElement('div');
+                contactItem.className = 'contact-item';
+
+                const detailHTML = contact.details.map(detail => {
+                    const trimmed = detail.trim();
+                    const lower = trimmed.toLowerCase();
+
+                    if (lower.startsWith('phone:')) {
+                        const phone = trimmed.split(':')[1].trim().replace(/\s+/g, '');
+                        return `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>`;
+                    } else if (lower.startsWith('email:')) {
+                        const email = trimmed.split(':')[1].trim();
+                        return `<p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>`;
+                    } else if (lower.startsWith('whatsapp:')) {
+                        const whatsapp = trimmed.split(':')[1].trim().replace(/\s+/g, '');
+                        return `<p><strong>WhatsApp:</strong> <a href="https://wa.me/${whatsapp.replace('+', '')}" target="_blank">${whatsapp}</a></p>`;
+                    } else if (lower.startsWith('instagram:')) {
+                        const handle = trimmed.split(':')[1].trim();
+                        return `<p><strong>Instagram:</strong> <a href="https://instagram.com/${handle}" target="_blank">@${handle}</a></p>`;
+                    } else if (lower.startsWith('facebook:')) {
+                        const handle = trimmed.split(':')[1].trim();
+                        return `<p><strong>Facebook:</strong> <a href="https://facebook.com/${handle}" target="_blank">${handle}</a></p>`;
+                    } else if (lower.startsWith('pinterest:')) {
+                        const handle = trimmed.split(':')[1].trim();
+                        return `<p><strong>Pinterest:</strong> <a href="https://pinterest.com/${handle}" target="_blank">${handle}</a></p>`;
+                    } else {
+                        return `<p>${trimmed}</p>`;
+                    }
+                }).join('');
+
+                contactItem.innerHTML = `
+            <h3 style="color:white;">${contact.title}</h3>
+            ${detailHTML}
+        `;
+                container.appendChild(contactItem);
+            });
+        }
+
+
+        // Smooth scrolling for navigation links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Function to contact via WhatsApp for services
+        function contactServiceViaWhatsApp(serviceName) {
+            // Pre-typed message for service inquiry
+            const message = `Hi! I'm interested in your ${serviceName} service. Could you please provide more information about:
+
+• Pricing and packages
+• Available appointment times
+• Process and timeline
+• What I should bring for consultation
+
+I'd love to schedule a consultation at your earliest convenience. Thank you!`;
+
+            // WhatsApp number (replace with actual business number)
+            const whatsappNumber = "917977730877"; // Format: country code + number (no + sign)
+
+            // Create WhatsApp URL with encoded message
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Function to contact via WhatsApp with image and pre-typed message
+        function contactViaWhatsApp(designTitle, price, imageUrl) {
+            // Pre-typed message with design details
+            const message = `Hi! I'm interested in the ${designTitle} (${price}). Could you please provide more details about this design? I'd love to discuss customization options and scheduling.
+
+Image reference: ${imageUrl}
+
+Looking forward to hearing from you!`;
+
+            // WhatsApp number (replace with actual business number)
+            const whatsappNumber = "917977730877"; // Format: country code + number (no + sign)
+
+            // Create WhatsApp URL with encoded message
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Function to initiate phone call
+        function callNow() {
+            // Phone number for the tailor shop
+            const phoneNumber = "+917977730877"; // Replace with actual business number
+
+            // Create tel URL to open in call manager
+            window.location.href = `tel:${phoneNumber}`;
+        }
+
+        // Function to handle service contact
+        function contactForService(serviceName) {
+            // This function is no longer used - replaced with WhatsApp and Call buttons
+        }
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function () {
+            populateServices();
+            populatePortfolio();
+            populateContact();
+            setupSmoothScrolling();
+        });
+    </script>
+</body>
+
+</html>
